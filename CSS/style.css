@@ -1,3 +1,20 @@
+html,
 body {
   height: 100%;
+}
+
+body {
+  background-color: #f5f7fd;
+  font-size: 14px;
+}
+
+main {
+  background-color: #fff;
+  width: 80% !important;
+}
+
+input.suhu {
+  height: 75% !important;
+  font-size: 3rem;
+  font-weight: 600 !important;
 }
