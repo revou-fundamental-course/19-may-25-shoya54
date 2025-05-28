@@ -9,26 +9,26 @@
 
 <body>
   <div class="h-100 d-flex align-items-center justify-content-center">
-    <main class="p-2 m-2 border border-1 shadow rounded-2">
+    <main class="p-2 m-2 border-success-subtle border-top border-5 shadow rounded-2">
       <section class="mb-3">
-        <p>Masukkan suhu derajat <span id="ketKonversi">Celsius (&deg;C)</span> ke kotak di bawah, lalu klik tombol
-          <strong>Konversi</strong> untuk mendapatkan hasil konversi dalam bentuk <span id="ketHasil">Fahrenheit
-            (&deg;F)</span>.
-        </p>
+        <p class="m-3 h6">Masukkan suhu derajat <span id="ketKonversi">Celsius (&deg;C)</span> ke kotak di bawah, lalu
+          klik tombol <strong>Konversi</strong> untuk mendapatkan hasil konversi dalam bentuk <span
+            id="ketHasil">Fahrenheit (&deg;F)</span>.</p>
+      </section>
+      <section>
+        <div class="alert" role="alert" id="notifikasi" style="display: none;"><i>&nbsp;</i><span></span></div>
       </section>
       <section class="mb-3">
-        <form class="d-flex" id="konversi">
+        <form class="d-flex" id="formKonversi">
           <div class="p-2 w-100">
-            <label for="inputKonversi" class="form-label fw-bold">
-              <i class="bi bi-thermometer-half">&nbsp;</i>
-              <span>Celsius (&deg;C)</span>
-            </label>
-            <input type="text" class="form-control suhu" id="inputKonversi" data-degree="C">
+            <label for="inputKonversi" class="form-label fw-bold"><i
+                class="bi bi-thermometer-half">&nbsp;</i><span>Celsius (&deg;C)</span></label>
+            <input type="text" class="form-control suhu" name="inputKonversi" id="inputKonversi" data-degree="C">
           </div>
           <div class="p-2 flex-shrink-1">
             <div class="d-flex flex-column">
-              <button type="button" class="btn btn-sm btn-primary my-1" onclick="doKonversi()">Konversi</button>
-              <button type="button" class="btn btn-sm btn-secondary my-1" onclick="doReset(this)">Reset</button>
+              <button type="submit" class="btn btn-sm btn-primary my-1">Konversi</button>
+              <button type="reset" class="btn btn-sm btn-secondary my-1">Reset</button>
               <button type="button" class="btn btn-sm btn-warning my-1" onclick="doReverse()">Reverse</button>
             </div>
           </div>
