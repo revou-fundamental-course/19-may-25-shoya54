@@ -23,7 +23,9 @@
           <div class="p-2 w-100">
             <label for="inputKonversi" class="form-label fw-bold"><i
                 class="bi bi-thermometer-half">&nbsp;</i><span>Celsius (&deg;C)</span></label>
-            <input type="text" class="form-control suhu" name="inputKonversi" id="inputKonversi" data-degree="C">
+            <input type="text" class="form-control suhu" name="inputKonversi" id="inputKonversi"
+              aria-describedby="inputHelp" data-degree="C">
+            <div id="inputHelp" class="form-text">Pisahkan desimal dengan tanda koma (,)</div>
           </div>
           <div class="p-2 flex-shrink-1">
             <div class="d-flex flex-column">
@@ -37,13 +39,15 @@
               <i class="bi bi-thermometer-half">&nbsp;</i>
               <span>Fahrenheit (&deg;F)</span>
             </label>
-            <input type="text" class="form-control suhu" id="hasilKonversi" readonly>
+            <input type="text" class="form-control suhu" name="hasilKonversi" id="hasilKonversi"
+              aria-describedby="hasilHelp" readonly>
+            <div id="hasilHelp" class="form-text">Hasil konversi suhu</div>
           </div>
         </form>
       </section>
       <section class="mb-3">
-        <label for="perhitungan" class="form-label">Cara kalkulasi:</label>
-        <p>rumus di sini</p>
+        <label for="perhitungan" class="form-label">Kalkulasi:</label>
+        <div class="alert alert-info" role="alert" id="perhitungan" style="display: none;"></div>
       </section>
 
 

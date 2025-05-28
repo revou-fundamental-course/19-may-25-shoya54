@@ -5,9 +5,13 @@ $('#formKonversi').on('submit', function (ev) {
   var inputSuhu = this.inputKonversi.value;
   customReset();
   if (regexInput.test(inputSuhu)) {
-    $('#notifikasi').addClass('alert-success');
-    $('#notifikasi i').prop('class', 'bi bi-people');
-    $('#notifikasi span').html(inputSuhu);
+    var hasilSuhu = 0;
+    var penjelasan = ($('#inputKonversi').data('degree') === 'C') ?
+      (inputSuhu + ' &deg;C * (9/5) + 32 = ' + hasilSuhu + ' &deg;F') :
+      ('(' + inputSuhu + ' &deg;F - 32) * 5/9 = ' + hasilSuhu + ' &deg;C');
+    $('#hasilKonversi').val(hasilSuhu);
+    $('#perhitungan').html(penjelasan).show();
+
   } else {
     $('#notifikasi').addClass((inputSuhu.length > 0) ? 'alert-danger' : 'alert-warning');
     $('#notifikasi i').prop('class', (inputSuhu.length > 0) ? 'bi bi-x-octagon-fill' : 'bi bi-exclamation-diamond-fill');
@@ -20,30 +24,17 @@ $('#formKonversi').on('submit', function (ev) {
 $('#formKonversi').bind('reset', customReset);
 
 function customReset() {
-  $('#notifikasi').hide();
+  $('div[role=alert]').hide();
   $('#notifikasi').prop('class', 'alert');
   $('#notifikasi i').prop('class', '');
   $('#notifikasi span').html('');
+  $('#perhitungan').html('');
   $('#inputKonversi').removeClass('is-invalid');
 }
 
-function doKonversi(f) {
-  f.preventDefault();
-  console.log(f);
-}
-
-function doReset() {
-  $('form#konversi').trigger('reset');
-  $('#ketKonversi').html('Celsius (&deg;C)');
-  $('#ketHasil').html('Fahrenheit (&deg;F)');
-  $('#inputKonversi').data('degree', 'C');
-  $('#inputKonversi').siblings('label').children('span').html('Celsius (&deg;C)');
-  $('#hasilKonversi').siblings('label').children('span').html('Fahrenheit (&deg;F)');
-}
-
 function doReverse() {
-  let ketKonv = $('#ketKonversi').html();
-  let ketRslt = $('#ketHasil').html();
+  var ketKonv = $('#ketKonversi').html();
+  var ketRslt = $('#ketHasil').html();
   $('#ketKonversi').html(ketRslt);
   $('#ketHasil').html(ketKonv);
   $('#inputKonversi').data('degree', $('#inputKonversi').data('degree') === 'C' ? 'F' : 'C');
