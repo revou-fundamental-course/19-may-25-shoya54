@@ -1,11 +1,13 @@
 
 $('#formKonversi').on('submit', function (ev) {
   ev.preventDefault();
-  var regexInput = /^(\+|\-)?\d+(\,\d+)?$/
+  var regexInput = /^(\+|\-)?\d+(\.\d+)?$/
   var inputSuhu = this.inputKonversi.value;
   customReset();
   if (regexInput.test(inputSuhu)) {
-    var hasilSuhu = 0;
+    var hasilSuhu = ($('#inputKonversi').data('degree') === 'C') ?
+      (inputSuhu * (9 / 5) + 32).toFixed(2) :
+      ((inputSuhu - 32) * 5 / 9).toFixed(2);
     var penjelasan = ($('#inputKonversi').data('degree') === 'C') ?
       (inputSuhu + ' &deg;C * (9/5) + 32 = ' + hasilSuhu + ' &deg;F') :
       ('(' + inputSuhu + ' &deg;F - 32) * 5/9 = ' + hasilSuhu + ' &deg;C');
@@ -41,4 +43,5 @@ function doReverse() {
   $('#inputKonversi').siblings('label').children('span').html(ketRslt);
   $('#hasilKonversi').siblings('label').children('span').html(ketKonv);
   $('#inputKonversi').val($('#hasilKonversi').val());
+  $('#hasilKonversi').val('');
 }
